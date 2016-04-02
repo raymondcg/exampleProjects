@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Should be: but there is something weird going on... xmlns="http://www.drools.org/xsd/kmodule" -->
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+   <kbase name="kbase1" packages="org.sample.rules.*" default="true">
+      <ksession name="exampleStatelessSession" type="stateless" />
+   </kbase>
+</kmodule>

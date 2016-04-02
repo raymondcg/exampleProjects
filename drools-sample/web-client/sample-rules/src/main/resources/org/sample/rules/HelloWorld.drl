@@ -1,0 +1,10 @@
+package org.sample.rules
+
+global org.slf4j.Logger logger;
+
+rule "Hello World : Hello World"
+	ruleflow-group "Hello World"
+	
+	then
+		logger.info("Hello World");
+end

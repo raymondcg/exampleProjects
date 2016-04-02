@@ -1,0 +1,7 @@
+* Java setup Info
+* Maven setup Info
+* Eclipse setup Info
+** Eclipse plugins
+** Code formatter
+** XML formatter
+** Save Actions
