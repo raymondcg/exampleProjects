@@ -19,12 +19,14 @@
 
    <properties>
       <project.buid.sourceEncoding>UTF-8</project.buid.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
       <!-- Maven Plugins -->
       <compiler.plugin.version>3.3</compiler.plugin.version>
       <java.version>1.8</java.version>
       <surefire.plugin.version>2.18</surefire.plugin.version>
       <failsafe.version>2.18</failsafe.version>
+      <resources.plugin.version>2.7</resources.plugin.version>
       <war.plugin.version>2.1.1</war.plugin.version>
 
       <!-- JBoss -->
@@ -86,6 +88,8 @@
                   <compilerId>javac</compilerId>
                   <source>${java.version}</source>
                   <target>${java.version}</target>
+                  <compilerVersion>${java.version}</compilerVersion>
+                  <encoding>UTF-8</encoding>
                </configuration>
             </plugin>
 
@@ -147,7 +151,17 @@
                   </execution>
                </executions>
             </plugin>
-            
+
+            <!-- To properly set encoding -->
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-resources-plugin</artifactId>
+               <version>${resources.plugin.version}</version>
+               <configuration>
+                  <encoding>UTF-8</encoding>
+               </configuration>
+            </plugin>
+
             <!-- Maven War plugin -->
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
