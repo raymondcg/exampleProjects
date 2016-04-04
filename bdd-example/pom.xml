@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+		http://maven.apache.org/POM/4.0.0 
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.sample</groupId>
+    <artifactId>bdd-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+    <name>bdd-example</name>
+    <description>Example project to demonstrate bdd.</description>
+    <inceptionYear>2016</inceptionYear>
+
+    <modules>
+        <module>bdd-bom</module>
+        <module>bdd-module</module>
+    </modules>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Codehaus Mojo</name>
+        <url>http://mojo.codehaus.org</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>jdoe</id>
+            <name>John Doe</name>
+            <email>jdoe@example.com</email>
+            <url>http://www.example.com/jdoe</url>
+            <organization>ACME</organization>
+            <organizationUrl>http://www.example.com</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>America/New_York</timezone>
+            <properties>
+                <picUrl>http://www.example.com/jdoe/pic</picUrl>
+            </properties>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Noelle</name>
+            <email>some.name@gmail.com</email>
+            <url>http://noellemarie.com</url>
+            <organization>Noelle Marie</organization>
+            <organizationUrl>http://noellemarie.com</organizationUrl>
+            <roles>
+                <role>tester</role>
+            </roles>
+            <timezone>America/Vancouver</timezone>
+            <properties>
+                <gtalk>some.name@gmail.com</gtalk>
+            </properties>
+        </contributor>
+    </contributors>
+
+    <issueManagement>
+        <system>Bugzilla</system>
+        <url>http://127.0.0.1/bugzilla/</url>
+    </issueManagement>
+</project>
