@@ -17,8 +17,9 @@
 			<pattern>%d %5p | %t | %-55logger{55} | %m | %n</pattern>
 		</encoder>
 	</appender>
+   
 	<logger name="org.sample">
-		<level value="WARN" />
+		<level value="INFO" />
 	</logger>
 
 	<root>

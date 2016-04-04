@@ -31,31 +31,50 @@
          <groupId>ch.qos.logback</groupId>
          <artifactId>logback-core</artifactId>
       </dependency>
-      <dependency>
-         <groupId>org.slf4j</groupId>
-         <artifactId>jcl-over-slf4j</artifactId>
-      </dependency>
 
-      <!-- Testing -->
       <dependency>
-         <groupId>junit</groupId>
-         <artifactId>junit</artifactId>
+         <groupId>org.jboss.spec.javax.servlet</groupId>
+         <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+         <scope>provided</scope>
       </dependency>
       <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-test</artifactId>
+         <groupId>org.jboss.spec.javax.jms</groupId>
+         <artifactId>jboss-jms-api_1.1_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.ejb</groupId>
+         <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+         <scope>provided</scope>
       </dependency>
    </dependencies>
 
    <build>
+      <finalName>jboss-as-helloworld-mdb</finalName>
       <resources>
          <resource>
             <directory>src/main/resources</directory>
+         </resource>
+         <resource>
+            <directory>src/webapp/WEB-INF</directory>
+            <targetPath>WEB-INF</targetPath>
+         </resource>
+         <resource>
+            <directory>src/webapp/META-INF</directory>
+            <targetPath>META-INF</targetPath>
          </resource>
       </resources>
       <testResources>
          <testResource>
             <directory>src/test/resources</directory>
+         </testResource>
+         <testResource>
+            <directory>src/webapp/WEB-INF</directory>
+            <targetPath>WEB-INF</targetPath>
+         </testResource>
+         <testResource>
+            <directory>src/webapp/META-INF</directory>
+            <targetPath>META-INF</targetPath>
          </testResource>
       </testResources>
       <plugins>
@@ -72,6 +91,11 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-failsafe-plugin</artifactId>
+         </plugin>
+         <!-- Mvn WAR packager -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
          </plugin>
       </plugins>
    </build>

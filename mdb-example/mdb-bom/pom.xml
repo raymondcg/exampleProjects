@@ -25,6 +25,10 @@
       <java.version>1.8</java.version>
       <surefire.plugin.version>2.18</surefire.plugin.version>
       <failsafe.version>2.18</failsafe.version>
+      <war.plugin.version>2.1.1</war.plugin.version>
+
+      <!-- JBoss -->
+      <jboss.javaee.version>3.0.2.Final</jboss.javaee.version>
 
       <!-- Logging -->
       <slf4j.version>1.7.12</slf4j.version>
@@ -59,41 +63,13 @@
             <scope>runtime</scope>
          </dependency>
 
-         <!-- Test -->
+         <!-- JBoss EE -->
          <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-         </dependency>
-         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${springframework.version}</version>
-            <scope>test</scope>
-            <exclusions>
-               <!-- Disable spring logging and allow link into SLF4J logging, validate this is needed or only the jcl over 
-                  slf4j. -->
-               <exclusion>
-                  <groupId>commons-logging</groupId>
-                  <artifactId>commons-logging</artifactId>
-               </exclusion>
-            </exclusions>
-         </dependency>
-
-         <!-- Spring -->
-         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${springframework.version}</version>
-            <exclusions>
-               <!-- Disable spring logging and allow link into SLF4J logging, validate this is needed or only the jcl over 
-                  slf4j. -->
-               <exclusion>
-                  <groupId>commons-logging</groupId>
-                  <artifactId>commons-logging</artifactId>
-               </exclusion>
-            </exclusions>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-6.0</artifactId>
+            <version>${jboss.javaee.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
          </dependency>
       </dependencies>
    </dependencyManagement>
@@ -139,7 +115,7 @@
                   </execution>
                </executions>
             </plugin>
-            
+
             <!-- Integration test runner for maven -->
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
@@ -170,6 +146,17 @@
                      </goals>
                   </execution>
                </executions>
+            </plugin>
+            
+            <!-- Maven War plugin -->
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-war-plugin</artifactId>
+               <version>${war.plugin.version}</version>
+               <configuration>
+                  <!-- Java EE 6 doesn't require web.xml. -->
+                  <failOnMissingWebXml>false</failOnMissingWebXml>
+               </configuration>
             </plugin>
          </plugins>
       </pluginManagement>
