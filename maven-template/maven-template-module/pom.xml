@@ -45,6 +45,12 @@
          <groupId>org.springframework</groupId>
          <artifactId>spring-test</artifactId>
       </dependency>
+
+      <!-- Spring DI -->
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context</artifactId>
+      </dependency>
    </dependencies>
 
    <build>
