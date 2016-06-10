@@ -1,7 +1,7 @@
 ======================
 Attention
 ======================
-This project is a sample JAX-RS project for rest services demonstrating Arquillian and rest service testing. 
+This project is a sample JAX-RS project for rest services demonstrating JBoss Container, Arquillian, and rest service testing. 
 ======================
 Currently Included
 ======================
