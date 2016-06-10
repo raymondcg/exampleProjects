@@ -9,6 +9,7 @@
       <groupId>org.sample</groupId>
       <artifactId>maven-template</artifactId>
       <version>1.0-SNAPSHOT</version>
+      <relativePath>../</relativePath>
    </parent>
    <artifactId>maven-template-bom</artifactId>
 

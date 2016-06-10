@@ -2,9 +2,9 @@
    xsi:schemaLocation="
 		http://maven.apache.org/POM/4.0.0 
 		http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
    <modelVersion>4.0.0</modelVersion>
    <packaging>jar</packaging>
+
    <parent>
       <groupId>org.sample</groupId>
       <artifactId>spring-boot-bom</artifactId>
@@ -49,12 +49,41 @@
          <groupId>org.springframework</groupId>
          <artifactId>spring-test</artifactId>
       </dependency>
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-test</artifactId>
+      </dependency>
 
-      <!-- Spring DI -->
+      <!-- Spring -->
       <dependency>
          <groupId>org.springframework</groupId>
          <artifactId>spring-context</artifactId>
       </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-webmvc</artifactId>
+      </dependency>
+
+      <!-- Spring Boot -->
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-web</artifactId>
+      </dependency>
+
+      <!-- Spring Boot Monitoring -->
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-actuator</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>com.ryantenney.metrics</groupId>
+         <artifactId>metrics-spring</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>de.codecentric</groupId>
+         <artifactId>spring-boot-admin-starter-client</artifactId>
+      </dependency>
+
    </dependencies>
 
    <build>
@@ -88,6 +117,12 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-failsafe-plugin</artifactId>
+         </plugin>
+
+         <!-- Spring Boot -->
+         <plugin>
+            <groupId>org.springframwework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
          </plugin>
       </plugins>
    </build>

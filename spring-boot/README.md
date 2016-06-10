@@ -1,25 +1,20 @@
-# Archetype / Template #
-
-## Instructions ##
-Create Archetype from root directory and install locally.
-```bash
-mvn archetype:create-from-project
-cd target/generated-sources/archetype/
-mvn install
-```
-
-## Archetype Future Enhancements ##
-* Figure out a way to get the below read me into the template separately. 
-
-------------------------------------
-
-# Project Description #
-This is a basic maven project layout ready for coding.
+# Spring Boot Proof of Concept #
+* Author: Raymond Gillett
+* Level: Basic
+* Technologies:
+* Summary: This is a basic spring boot project.
+* Target Product / Container: Spring Boot
 
 ## Future Enhancements ##
-TBD
+* Guides
+	* Spring MVC UI app https://github.com/bkielczewski/example-spring-boot-mvc
+	* Spring MVC UI app https://github.com/bkielczewski/example-spring-boot-rest
+	* https://spring.io/guides/gs/spring-boot
+* Play with monitoring
+* Make basic web app work in spring boot, including jsp page and rest end points
+* Add in multiple dispatchers so that the web pages, rest, actuator, and metrics end points all work.
 
-## Local development environment setup instructions ##
+## Setup ##
 
 ### System Requirements ###
 * Maven 3
@@ -53,7 +48,7 @@ _TBD_
 _TBD_
 
 ### Validate Versions ###
-```
+```bash
 java -version
 javac -version
 mvn --version
@@ -64,14 +59,20 @@ TBD - Container
 ## Build / Deploy Instructions ##
 ### Build ###
 #### Build / Test ####
-1. Unit / Acceptance Testing
-```
+1. Build
+```bash
 mvn clean install
 ```
-2. System Integrated Test
-```
-mvn clean install -Pintegrated
+2. Local Testing
+```bash
+java -jar spring-boot-module/target/spring-boot-module-1.0-SNAPSHOT.jar
 ```
 
 #### Deploy ####
-_TBD_
+1. Copy jar to destination
+2. Setup properties in environment
+	1. _TBD_
+3. Start Jar
+```bash
+java -jar spring-boot-module/target/spring-boot-module-1.0-SNAPSHOT.jar
+```
