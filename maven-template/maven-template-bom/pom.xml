@@ -17,8 +17,6 @@
    <inceptionYear>2016</inceptionYear>
 
    <properties>
-      <project.buid.sourceEncoding>UTF-8</project.buid.sourceEncoding>
-      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
       <!-- Maven Plugins -->
       <surefire.plugin.version>2.18</surefire.plugin.version>
