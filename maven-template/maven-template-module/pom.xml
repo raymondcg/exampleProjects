@@ -58,10 +58,16 @@
          <resource>
             <directory>${basedir}/src/main/resources</directory>
          </resource>
+         <resource>
+            <directory>${basedir}/src/main/webapp</directory>
+         </resource>
       </resources>
       <testResources>
          <testResource>
             <directory>${basedir}/src/test/resources</directory>
+         </testResource>
+         <testResource>
+            <directory>${basedir}/src/test/webapp</directory>
          </testResource>
       </testResources>
       <plugins>
