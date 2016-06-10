@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.sample.web.WelcomeController;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -29,8 +28,8 @@ public class HelloControllerTest {
 
     @Test
     public void getHello() throws Exception {
-        mvc.perform( MockMvcRequestBuilders.get( "/" ).accept( MediaType.APPLICATION_JSON ) ).andExpect(
-                status().isOk() );
+
+        mvc.perform( MockMvcRequestBuilders.get( "/hello/tlcWinner" ) ).andExpect( status().isOk() );
     }
 
 }

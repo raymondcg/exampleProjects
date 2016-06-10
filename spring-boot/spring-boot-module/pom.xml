@@ -84,6 +84,11 @@
          <artifactId>spring-boot-admin-starter-client</artifactId>
       </dependency>
 
+      <!-- Javax for JSP pages -->
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>jstl</artifactId>
+      </dependency>
    </dependencies>
 
    <build>

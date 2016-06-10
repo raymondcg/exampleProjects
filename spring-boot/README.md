@@ -10,6 +10,7 @@
 	* Spring MVC UI app https://github.com/bkielczewski/example-spring-boot-mvc
 	* Spring MVC UI app https://github.com/bkielczewski/example-spring-boot-rest
 	* https://spring.io/guides/gs/spring-boot
+	* Spring MVC http://www.mkyong.com/spring-mvc/gradle-spring-4-mvc-hello-world-example-annotation/
 * Play with monitoring
 * Make basic web app work in spring boot, including jsp page and rest end points
 * Add in multiple dispatchers so that the web pages, rest, actuator, and metrics end points all work.
