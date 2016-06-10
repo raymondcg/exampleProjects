@@ -1,6 +1,11 @@
 # exampleProjects #
 These projects are proof of concepts and meant to be used as references for future projects.
 
+Other Projects to bang out:
+* Massively Parallel event processing engine. Kafka?
+* OSGI
+* BDD example - Connect in with Hibernate/Javalite/Spring Data example
+
 ## Local development environment setup instructions ##
 
 ### System Requirements ###
