@@ -2,7 +2,11 @@
 This is a project to demonstrate the utilization of spring batch to process in a horizontally and vertically scalable solution. As well as how to deploy that project.
 
 ## Future Enhancements ##
-* Add spring boot example for deployments in additions to wars.
+* spring-batch-war 
+	* Convert context, web.xml, and spring-mvc-servlet.xml to java configuration files.
+	* Add test class that starts up app, and ideally does a basic test in arquillian to validate application context.
+* spring-batch-jar
+	* Spring boot deployable example.
 * Add way to configure properties.
 * Enhance so that out of the box the example can be configured to run on multiple nodes.
 	* Add way to configure MQ connections.
@@ -11,6 +15,13 @@ This is a project to demonstrate the utilization of spring batch to process in a
 	* All the High Availability and Fault tolerance gaps.
 	* All of the benefits
 	* How to take example and scale out both vertically and horizontally
+* Add fault tolerance
+	* Database
+		* Spring Batch Admin 
+		* Spring batch job during processing
+	* MQ
+	* Node failure
+		* When processing steps either as a master or as a worker.
 
 ## Local development environment setup instructions ##
 

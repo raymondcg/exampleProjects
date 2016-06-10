@@ -22,39 +22,12 @@
    </properties>
 
    <dependencies>
-      <!-- logging -->
+      <!-- Project that defines the domain -->
       <dependency>
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-api</artifactId>
+         <groupId>org.sample</groupId>
+         <artifactId>spring-batch-domain</artifactId>
       </dependency>
-      <dependency>
-         <groupId>ch.qos.logback</groupId>
-         <artifactId>logback-core</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>ch.qos.logback</groupId>
-         <artifactId>logback-classic</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.slf4j</groupId>
-         <artifactId>jcl-over-slf4j</artifactId>
-      </dependency>
-
-      <!-- Testing -->
-      <dependency>
-         <groupId>junit</groupId>
-         <artifactId>junit</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-test</artifactId>
-      </dependency>
-
-      <!-- Spring DI -->
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-context</artifactId>
-      </dependency>
+      
    </dependencies>
 
    <build>
@@ -69,9 +42,6 @@
       <testResources>
          <testResource>
             <directory>${basedir}/src/test/resources</directory>
-         </testResource>
-         <testResource>
-            <directory>${basedir}/src/test/webapp</directory>
          </testResource>
       </testResources>
       <plugins>
