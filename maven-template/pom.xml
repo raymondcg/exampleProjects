@@ -10,7 +10,7 @@
 
     <packaging>pom</packaging>
     <name>maven-template</name>
-    <description>Example project to demonstrate a basic maven layout. This could be an archetype, but I'm too lazy to do that.</description>
+    <description>Example project to demonstrate a basic maven layout.</description>
     <inceptionYear>2016</inceptionYear>
 
     <modules>
