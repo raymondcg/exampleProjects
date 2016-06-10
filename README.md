@@ -1,23 +1,41 @@
 # exampleProjects #
 These projects are proof of concepts and meant to be used as references for future projects.
 
-Other Projects to bang out:
+## Project Descriptions ##
+
+### Drools Sample ###
+Example using BRMS as externalized rules.
+
+### JBoss example ###
+A basic rest service project using Jax-rs deployable to a Jboss container
+
+### maven template ###
+This is a basic project that can be copied over to start a new maven project. This really should be a maven archetype. It has a basic structure and setup for JBoss deployments, and SLF4j logging.
+
+### mdb example ###
+A project to show message driven beans.
+
+### Spring Batch ###
+A basic example showing spring batch parallel processing and limitations/constraints.
+
+### Spring Boot ###
+Spring boot example, showing all the fun stuff to get Spring MVC working with annotations in a spring boot container with spring boot monitoring.
+
+## Future Projects ##
 * Massively Parallel event processing engine. Kafka?
 * OSGI
 * BDD example - Connect in with Hibernate/Javalite/Spring Data example
 
-## Local development environment setup instructions ##
+## Setup instructions ##
 
 ### System Requirements ###
 * Maven 3
 * JDK 1.8
-* JBoss EAP 6.4 or JBoss AS 7
 * Git
 
 ### Eclipse ###
-_TBD_
 * Plugins
-	* 
+	* _TBD_
 * Code Formatter
 	* Save Actions
 
@@ -36,57 +54,11 @@ _TBD_
 * Setup SSH
 	* [github ssh ](https://help.github.com/articles/generating-an-ssh-key/)
 	* [TortoiseGit SSH](http://stackoverflow.com/questions/13516119/tortoisegit-with-openssh-key-not-authenticating-using-ssh-agent/33328628#33328628)
-	
-### Container ###
-_TBD_
 
-### Validate Versions ###
+	### Validate Versions ###
 ```
 java -version
 javac -version
 mvn --version
 git --version
-TBD - Container
-```
-
-## Project Descriptions ##
-### Eclipse Resources ###
-This includes any imports or setup details needed to get Eclipse setup to work correctly.
-
-### maven template ###
-This is a basic project that can be copied over to start a new maven project. This really should be a maven archetype. It has a basic structure and setup for JBoss deployments, and SLF4j logging.
-
-### Jax RS ###
-A basic rest service project.
-
-### Drools Sample ###
-Example using BRMS as externalized rules.
-
-## Build / Deploy Instructions ##
-### Build ###
-#### Build / Test ####
-1. Unit / Acceptance Testing
-```
-mvn clean install
-```
-2. System Integrated Test
-```
-mvn clean install -Pintegrated
-```
-
-#### Deploy ####
-1. Start JBoss Server
-```
-For Linux: 		JBoss_Home/bin/standalone.sh -c standalone-full.xml
-For Windows: 	JBOSS_HOME\bin\standalone.bat -c standalone-full.xml
-```
-2. Open a command line and navigate to the root directory of the project.
-3. Deploy the archive
-```
-mvn clean package jboss-as:deploy
-```
-4. This will deploy _target/???.war_ to the running instance of the server.
-5. Undeploy the archive
-```
-mvn clean package jboss-as:undeploy
 ```
