@@ -1,75 +1,156 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
+   xsi:schemaLocation="
 		http://maven.apache.org/POM/4.0.0 
 		http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.sample</groupId>
-    <artifactId>maven-template</artifactId>
-    <version>1.0-SNAPSHOT</version>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.sample</groupId>
+   <artifactId>maven-template</artifactId>
+   <version>1.0-SNAPSHOT</version>
 
-    <packaging>pom</packaging>
-    <name>maven-template</name>
-    <description>Example project to demonstrate a basic maven layout.</description>
-    <inceptionYear>2016</inceptionYear>
+   <packaging>pom</packaging>
+   <name>maven-template</name>
+   <description>Example project to demonstrate a basic maven layout.</description>
+   <inceptionYear>2016</inceptionYear>
 
-    <modules>
-        <module>maven-template-bom</module>
-        <module>maven-template-module</module>
-    </modules>
+   <modules>
+      <module>maven-template-bom</module>
+      <module>maven-template-module</module>
+   </modules>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
+   <properties>
+      <project.buid.sourceEncoding>UTF-8</project.buid.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <organization>
-        <name>Codehaus Mojo</name>
-        <url>http://mojo.codehaus.org</url>
-    </organization>
+      <!-- Maven Plugins -->
+      <compiler.plugin.version>3.3</compiler.plugin.version>
+      <java.version>1.8</java.version>
+      <formatter.plugin.version>0.5.2</formatter.plugin.version>
+      <resources.plugin.version>2.7</resources.plugin.version>
 
-    <developers>
-        <developer>
-            <id>jdoe</id>
-            <name>John Doe</name>
-            <email>jdoe@example.com</email>
-            <url>http://www.example.com/jdoe</url>
-            <organization>ACME</organization>
-            <organizationUrl>http://www.example.com</organizationUrl>
-            <roles>
-                <role>architect</role>
-                <role>developer</role>
-            </roles>
-            <timezone>America/New_York</timezone>
-            <properties>
-                <picUrl>http://www.example.com/jdoe/pic</picUrl>
-            </properties>
-        </developer>
-    </developers>
+   </properties>
 
-    <contributors>
-        <contributor>
-            <name>Noelle</name>
-            <email>some.name@gmail.com</email>
-            <url>http://noellemarie.com</url>
-            <organization>Noelle Marie</organization>
-            <organizationUrl>http://noellemarie.com</organizationUrl>
-            <roles>
-                <role>tester</role>
-            </roles>
-            <timezone>America/Vancouver</timezone>
-            <properties>
-                <gtalk>some.name@gmail.com</gtalk>
-            </properties>
-        </contributor>
-    </contributors>
+   <build>
+      <!-- These plugins are here so that encoding for the entire project is set to UTF-8, and to ensure that all items are 
+         properly formatted. -->
+      <pluginManagement>
+         <plugins>
+            <!-- Compiles to a specific java version. -->
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <version>${compiler.plugin.version}</version>
+               <configuration>
+                  <compilerId>javac</compilerId>
+                  <source>${java.version}</source>
+                  <target>${java.version}</target>
+                  <compilerVersion>${java.version}</compilerVersion>
+                  <encoding>UTF-8</encoding>
+               </configuration>
+            </plugin>
 
-    <issueManagement>
-        <system>Bugzilla</system>
-        <url>http://127.0.0.1/bugzilla/</url>
-    </issueManagement>
+            <!-- Code Formatting, on 'clean' goal -->
+            <plugin>
+               <groupId>net.revelc.code</groupId>
+               <artifactId>formatter-maven-plugin</artifactId>
+               <version>${formatter.plugin.version}</version>
+               <executions>
+                  <execution>
+                     <!-- Binding to clean phase because M2E doesn't work correctly for this plugin.-->
+                     <phase>clean</phase>
+                     <goals>
+                        <goal>format</goal>
+                     </goals>
+                  </execution>
+               </executions>
+               <configuration>
+                  <configFile>${basedir}/../etc/eclipse/JavaCodeStyle.xml</configFile>
+                  <encoding>UTF-8</encoding>
+               </configuration>
+            </plugin>
+
+            <!-- To properly set encoding -->
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-resources-plugin</artifactId>
+               <version>${resources.plugin.version}</version>
+               <configuration>
+                  <encoding>UTF-8</encoding>
+               </configuration>
+            </plugin>
+         </plugins>
+      </pluginManagement>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+         </plugin>
+         <!-- Code Formatting, on 'clean' goal -->
+         <plugin>
+            <groupId>net.revelc.code</groupId>
+            <artifactId>formatter-maven-plugin</artifactId>
+         </plugin>
+
+         <!-- To properly set encoding -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+         </plugin>
+      </plugins>
+   </build>
+
+   <licenses>
+      <license>
+         <name>Apache License, Version 2.0</name>
+         <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+         <distribution>repo</distribution>
+         <comments>A business-friendly OSS license</comments>
+      </license>
+   </licenses>
+
+   <organization>
+      <name>Codehaus Mojo</name>
+      <url>http://mojo.codehaus.org</url>
+   </organization>
+
+   <developers>
+      <developer>
+         <id>jdoe</id>
+         <name>John Doe</name>
+         <email>jdoe@example.com</email>
+         <url>http://www.example.com/jdoe</url>
+         <organization>ACME</organization>
+         <organizationUrl>http://www.example.com</organizationUrl>
+         <roles>
+            <role>architect</role>
+            <role>developer</role>
+         </roles>
+         <timezone>America/New_York</timezone>
+         <properties>
+            <picUrl>http://www.example.com/jdoe/pic</picUrl>
+         </properties>
+      </developer>
+   </developers>
+
+   <contributors>
+      <contributor>
+         <name>Noelle</name>
+         <email>some.name@gmail.com</email>
+         <url>http://noellemarie.com</url>
+         <organization>Noelle Marie</organization>
+         <organizationUrl>http://noellemarie.com</organizationUrl>
+         <roles>
+            <role>tester</role>
+         </roles>
+         <timezone>America/Vancouver</timezone>
+         <properties>
+            <gtalk>some.name@gmail.com</gtalk>
+         </properties>
+      </contributor>
+   </contributors>
+
+   <issueManagement>
+      <system>Bugzilla</system>
+      <url>http://127.0.0.1/bugzilla/</url>
+   </issueManagement>
 </project>

@@ -8,10 +8,12 @@ cd target/generated-sources/archetype/
 mvn install
 ```
 
-## Future Enhancements ##
+## Archetype Future Enhancements ##
 * Figure out a way to get the below read me into the template separately. 
 
-# Maven Template project #
+------------------------------------
+
+# Project Description #
 This is a basic maven project layout ready for coding.
 
 ## Future Enhancements ##
@@ -22,7 +24,6 @@ TBD
 ### System Requirements ###
 * Maven 3
 * JDK 1.8
-* JBoss EAP 6.4 or JBoss AS 7
 * Git
 
 ### Eclipse ###
@@ -60,19 +61,6 @@ git --version
 TBD - Container
 ```
 
-## Project Descriptions ##
-### Eclipse Resources ###
-This includes any imports or setup details needed to get Eclipse setup to work correctly.
-
-### maven template ###
-This is a basic project that can be copied over to start a new maven project. This really should be a maven archetype. It has a basic structure and setup for JBoss deployments, and SLF4j logging.
-
-### Jax RS ###
-A basic rest service project.
-
-### Drools Sample ###
-Example using BRMS as externalized rules.
-
 ## Build / Deploy Instructions ##
 ### Build ###
 #### Build / Test ####
@@ -86,18 +74,4 @@ mvn clean install -Pintegrated
 ```
 
 #### Deploy ####
-1. Start JBoss Server
-```
-For Linux: 		JBoss_Home/bin/standalone.sh -c standalone-full.xml
-For Windows: 	JBOSS_HOME\bin\standalone.bat -c standalone-full.xml
-```
-2. Open a command line and navigate to the root directory of the project.
-3. Deploy the archive
-```
-mvn clean package jboss-as:deploy
-```
-4. This will deploy _target/???.war_ to the running instance of the server.
-5. Undeploy the archive
-```
-mvn clean package jboss-as:undeploy
-```
+_TBD_

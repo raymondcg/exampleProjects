@@ -9,7 +9,6 @@
       <groupId>org.sample</groupId>
       <artifactId>maven-template</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <relativePath>../</relativePath>
    </parent>
    <artifactId>maven-template-bom</artifactId>
 
@@ -22,12 +21,9 @@
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
       <!-- Maven Plugins -->
-      <compiler.plugin.version>3.3</compiler.plugin.version>
-      <java.version>1.8</java.version>
       <surefire.plugin.version>2.18</surefire.plugin.version>
       <failsafe.version>2.18</failsafe.version>
-      <resources.plugin.version>2.7</resources.plugin.version>
-      <formatter.plugin.version>0.5.2</formatter.plugin.version>
+      
       <!-- Logging -->
       <slf4j.version>1.7.21</slf4j.version>
       <logback.version>1.1.7</logback.version>
@@ -53,6 +49,7 @@
             <artifactId>logback-core</artifactId>
             <version>${logback.version}</version>
          </dependency>
+         <!-- Required for binding logback to slf4j -->
          <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -108,20 +105,6 @@
    <build>
       <pluginManagement>
          <plugins>
-            <!-- Compiles to a specific java version. -->
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-compiler-plugin</artifactId>
-               <version>${compiler.plugin.version}</version>
-               <configuration>
-                  <compilerId>javac</compilerId>
-                  <source>${java.version}</source>
-                  <target>${java.version}</target>
-                  <compilerVersion>${java.version}</compilerVersion>
-                  <encoding>UTF-8</encoding>
-               </configuration>
-            </plugin>
-
             <!-- Unit test runner for maven -->
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
@@ -181,35 +164,6 @@
                </executions>
             </plugin>
 
-            <!-- To properly set encoding -->
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-resources-plugin</artifactId>
-               <version>${resources.plugin.version}</version>
-               <configuration>
-                  <encoding>UTF-8</encoding>
-               </configuration>
-            </plugin>
-
-            <!-- Code Formatting, on 'clean' goal -->
-            <plugin>
-               <groupId>net.revelc.code</groupId>
-               <artifactId>formatter-maven-plugin</artifactId>
-               <version>${formatter.plugin.version}</version>
-               <executions>
-                  <execution>
-                     <!-- Binding to clean phase because M2E doesn't work correctly for this plugin. Could try v2.0.0 if 
-                        it was available -->
-                     <phase>clean</phase>
-                     <goals>
-                        <goal>format></goal>
-                     </goals>
-                  </execution>
-               </executions>
-               <configuration>
-                  <configFile>${basedir}/../etc/eclipse/JavaCodeStyle.xml</configFile>
-               </configuration>
-            </plugin>
          </plugins>
       </pluginManagement>
    </build>
