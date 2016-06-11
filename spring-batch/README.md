@@ -54,7 +54,7 @@ _TBD_
 	* [TortoiseGit SSH](http://stackoverflow.com/questions/13516119/tortoisegit-with-openssh-key-not-authenticating-using-ssh-agent/33328628#33328628)
 	
 ### Container ###
-_TBD_
+See instructions in: https://github.com/jboss-developer/jboss-brms-quickstarts/tree/6.2.x/helloworld-brms
 
 ### Validate Versions ###
 ```
@@ -69,13 +69,33 @@ TBD - Container
 ### Build ###
 #### Build / Test ####
 1. Unit / Acceptance Testing
-```
+```bash
 mvn clean install
 ```
-2. System Integrated Test
-```
-mvn clean install -Pintegrated
+
+### Deploy ###
+
+### Executable Jar ###
+1. Run Jar
+```bash
+java -jar spring-batch-jar\target\spring-batch-node.jar
 ```
 
-#### Deploy ####
-_TBD_
+
+#### Container ###
+1. Start server
+```bash
+jboss_HOME\bin\standalone.bat
+```
+2. Deploy
+```bash
+mvn jboss-as:deploy
+```
+3. Stop Server
+```bash
+
+```
+4. UnDeploy
+```bash
+mvn jboss-as:undeploy
+```

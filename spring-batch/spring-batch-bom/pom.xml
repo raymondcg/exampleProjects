@@ -22,6 +22,7 @@
       <!-- Maven Plugins -->
       <surefire.plugin.version>2.18</surefire.plugin.version>
       <failsafe.version>2.18</failsafe.version>
+      <maven.jboss.plugin.version>7.7.Final</maven.jboss.plugin.version>
 
       <!-- Logging -->
       <slf4j.version>1.7.21</slf4j.version>
@@ -226,6 +227,11 @@
                </executions>
             </plugin>
 
+            <plugin>
+               <groupId>org.jboss.as.plugins</groupId>
+               <artifactId>jboss-as-maven-plugin</artifactId>
+               <version>${maven.jboss.plugin.version}</version>
+            </plugin>
          </plugins>
       </pluginManagement>
    </build>

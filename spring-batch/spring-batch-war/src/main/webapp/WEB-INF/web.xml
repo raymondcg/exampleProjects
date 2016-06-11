@@ -17,6 +17,25 @@
       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
    </listener>
 
+
+
+   <servlet>
+      <servlet-name>Batch Servlet</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>classpath*:/org/springframework/batch/admin/web/resources/servlet-config.xml</param-value>
+      </init-param>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+
+   <servlet-mapping>
+      <servlet-name>Batch Servlet</servlet-name>
+      <url-pattern>
+         /admin/*
+         <url-pattern>
+   </servlet-mapping>
+
    <servlet>
       <servlet-name>spring-mvc</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

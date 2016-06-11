@@ -13,12 +13,20 @@
    <!-- TODO convert this to java configuration file. -->
    <!-- TODO Import _All_ step definitions. Master, worker, and shared. -->
 
+   <!-- Import all Master contexts -->
+   <!-- Bootstrap spring batch admin -->
+   <import resouce="classpath*:/org/springframework/batch/admin/web/resources/webapp-config.xml" />
+   <import resouce="classpath:master/*.xml" />
+   <import resouce="classpath:master/jobSupport/*" />
+
+
    <!-- Import Worker Step definitions, and shared bean configurations. -->
    <import resouce="classpath:shared/*.xml" />
    <import resouce="classpath:worker/*.xml" />
 
 
    <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"
+
 
 
 

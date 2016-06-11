@@ -3,7 +3,7 @@
    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
       <!-- TODO set filename and path from property -->
       <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-         <FileNamePattern>logs/application/maven-template-%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+         <FileNamePattern>logs/application/spring-batch-node-%d{yyyy-MM-dd}.%i.log</FileNamePattern>
          <!-- Each file should be at most 10MB, keep 7 Days worth of history, but at most 10 GB. -->
          <maxFileSize>10MB</maxFileSize>
          <MaxHistory>7</MaxHistory>
@@ -14,8 +14,19 @@
       </encoder>
    </appender>
 
+   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+         <level>INFO</level>
+      </filter>
+      <filter class="com.myapp.ThresholdLoggerFilter">
+         <logger>org.springframework</logger>
+         <level>ERROR</level>
+      </filter>
+   </appender>
+
    <logger name="org.sample">
       <level value="INFO" />
+      <appender-ref ref="STDOUT" />
    </logger>
 
    <root>
