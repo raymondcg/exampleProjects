@@ -33,7 +33,7 @@
       <!-- Spring -->
       <springframework.version>4.2.5.RELEASE</springframework.version>
 
-      <liquibase.version>2.0.5</liquibase.version>
+      <liquibase.version>3.5.1</liquibase.version>
       <dbh2.version>1.4.187</dbh2.version>
       
       <db.env>local</db.env>
