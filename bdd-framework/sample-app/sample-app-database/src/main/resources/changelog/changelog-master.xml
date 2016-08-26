@@ -1,0 +1,17 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:ext="http://liquibase.org/xml/ns/dbchangelog-ext"
+   xsi:schemaLocation="
+      http://www.liquibase.org/xml/ns/dbchangelog 
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog.xsd 
+      http://www.liquibase.org/xml/ns/dbchangelog-ext 
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+   <include file="changelog-createdb.xml" relativeToChangelogFile="true" />
+   <include file="changelog-release1.xml" relativeToChangelogFile="true" />
+
+   <!-- Always run these steps last. This will ensure that all procs, functions, packages, etc are recompiled, and permissions 
+      are set correctly. -->
+   <include file="../compiledObjects/compiledObjects.xml" relativeToChangelogFile="true" />
+   <include file="../compiledObjects/exec/grant_objects_privs.xml" relativeToChangelogFile="true" />
+
+</databaseChangeLog>
