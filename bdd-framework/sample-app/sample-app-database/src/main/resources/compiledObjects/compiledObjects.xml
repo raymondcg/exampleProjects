@@ -4,6 +4,13 @@
     http://www.liquibase.org/xml/ns/dbchangelog 
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <!-- <include file="../release1/createdb.sql" relativeToChangelogFile="true" /> -->
 
+    <!-- Views -->
+    <!-- <include file="views/mv1.sql" relativeToChangelogFile="true" /> -->
+
+    <!-- Triggers -->
+    <include file="triggers/triggers.xml" relativeToChangelogFile="true" />
+
+    <!-- Procs, Functions, Packages -->
+    <!-- <include file="procedures/proc1.xml" relativeToChangelogFile="true" /> -->
 </databaseChangeLog>
