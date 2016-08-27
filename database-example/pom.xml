@@ -5,82 +5,87 @@
 
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <parent>
-        <groupId>org.sample</groupId>
-        <artifactId>sample-app-bom</artifactId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath>../sample-app-bom</relativePath>
-    </parent>
-    <artifactId>sample-app-database</artifactId>
 
-    <name>sample-app-database</name>
+    <groupId>org.sample</groupId>
+    <artifactId>database-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>database-example</name>
     <description>Database project defines all DDL and DML used by the application. Deploying this project to the database should be the exact database state needed by the application to function. This project will leverage liquibase to setup and manage the database.</description>
     <inceptionYear>2016</inceptionYear>
 
     <properties>
 
-    </properties>
+        <!-- Maven Plugins -->
+        <compiler.plugin.version>3.3</compiler.plugin.version>
+        <java.version>1.8</java.version>
+        <surefire.plugin.version>2.18</surefire.plugin.version>
+        <failsafe.version>2.18</failsafe.version>
 
+        <!-- Logging -->
+        <slf4j.version>1.7.21</slf4j.version>
+        <logback.version>1.1.7</logback.version>
+
+        <!-- Testing -->
+        <junit.version>4.12</junit.version>
+
+        <!-- Spring -->
+        <springframework.version>4.2.5.RELEASE</springframework.version>
+
+        <liquibase.version>3.5.1</liquibase.version>
+        <dbh2.version>1.4.187</dbh2.version>
+
+        <db.env>local</db.env>
+
+        <hsqldb.version>2.3.2</hsqldb.version>
+
+    </properties>
     <dependencies>
 
         <!-- Liquibase -->
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
         </dependency>
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-maven-plugin</artifactId>
-        </dependency>
-
-        <!-- Test -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-
-        <!-- HyperSQL DB -->
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
+            <version>${liquibase.version}</version>
         </dependency>
 
         <!-- Database Driver -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>${dbh2.version}</version>
         </dependency>
 
+        <!-- HyperSQL DB -->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-        </dependency>
-
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <!-- file appender logging -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-        </dependency>
-        <!-- Required for binding logback to slf4j -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <!--Binding for commons logging over slf4j -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${springframework.version}</version>
         </dependency>
 
     </dependencies>
@@ -196,7 +201,29 @@
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
+
+                <!-- Compiles to a specific java version. -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler.plugin.version}</version>
+                    <configuration>
+                        <compilerId>javac</compilerId>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <compilerVersion>${java.version}</compilerVersion>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
+
+        <plugins>
+            <!-- Compiles to a specific java version. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>
