@@ -49,8 +49,8 @@ public class H2DataSource {
     public void startDBManager() {
 
         // h2
-        DatabaseManagerSwing
-                .main( new String[] { "--url", databaseUrl, "--user", databaseUser, "--password", databasePassword } );
+        DatabaseManagerSwing.main( new String[] { "--url", databaseUrl, "--user", databaseUser, "--password",
+                databasePassword } );
     }
 
     // Start WebServer, access http://localhost:8082
