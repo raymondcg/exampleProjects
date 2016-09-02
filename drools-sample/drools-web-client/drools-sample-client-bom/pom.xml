@@ -6,14 +6,14 @@
 
    <parent>
       <groupId>org.sample</groupId>
-      <artifactId>web-client</artifactId>
+      <artifactId>drools-web-client</artifactId>
       <version>1.0-SNAPSHOT</version>
       <relativePath>../</relativePath>
    </parent>
-   <artifactId>sample-client-bom</artifactId>
+   <artifactId>drools-sample-client-bom</artifactId>
    <packaging>pom</packaging>
 
-   <name>Sample Client Bill of Materials</name>
+   <name>Drools Sample Client Bill of Materials</name>
    <description>Sample client project to leverage drools runner, drools kjar, and cucumber testing</description>
    <inceptionYear>2016</inceptionYear>
 
@@ -50,7 +50,7 @@
          <!-- Rules KJar -->
          <dependency>
             <groupId>org.sample</groupId>
-            <artifactId>sample-rules</artifactId>
+            <artifactId>drools-sample-rules</artifactId>
             <version>${sample-rules.version}</version>
          </dependency>
 

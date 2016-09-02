@@ -7,37 +7,23 @@
    <modelVersion>4.0.0</modelVersion>
    <parent>
       <groupId>org.sample</groupId>
-      <artifactId>sample-client-bom</artifactId>
+      <artifactId>drools-sample-client-bom</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <relativePath>../sample-client-bom</relativePath>
+      <relativePath>../drools-sample-client-bom</relativePath>
    </parent>
 
-   <artifactId>sample-client</artifactId>
+   <artifactId>drools-sample-rules</artifactId>
    <packaging>jar</packaging>
-   <name>sample-client</name>
+   <name>drools-sample-drools</name>
    <description>Sample Drools project to demonstrate drools, and cucumber testing</description>
    <inceptionYear>2016</inceptionYear>
 
-
    <dependencies>
-      <!-- Rules KJar -->
-      <dependency>
-         <groupId>org.sample</groupId>
-         <artifactId>sample-rules</artifactId>
-      </dependency>
-
-      <!-- Rules Runner -->
-      <dependency>
-         <groupId>org.sample</groupId>
-         <artifactId>drools-runner-core</artifactId>
-      </dependency>
-
       <!-- logging -->
       <dependency>
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-api</artifactId>
       </dependency>
-      <!-- TODO Validate rolling file appender in 'main' works correctly. -->
       <dependency>
          <groupId>ch.qos.logback</groupId>
          <artifactId>logback-classic</artifactId>
@@ -47,16 +33,6 @@
       <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-test</artifactId>
-      </dependency>
-
-      <!-- DI -->
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-context</artifactId>
       </dependency>
    </dependencies>
 

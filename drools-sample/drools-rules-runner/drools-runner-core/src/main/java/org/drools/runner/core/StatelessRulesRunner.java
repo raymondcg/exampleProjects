@@ -6,6 +6,7 @@ import org.drools.runner.core.api.Request;
 import org.drools.runner.core.api.RulesRunner;
 import org.drools.runner.core.common.CommandUtils;
 import org.drools.runner.core.common.ReflectiveExecutionResultsTransformer;
+import org.drools.runner.core.common.TimerAgendaEventListener;
 import org.kie.api.KieServices;
 import org.kie.api.command.BatchExecutionCommand;
 import org.kie.api.event.rule.DebugAgendaEventListener;
@@ -63,7 +64,8 @@ public class StatelessRulesRunner implements RulesRunner {
         if ( debugConsoleLogging ) {
             session.addEventListener( new DebugRuleRuntimeEventListener() );
             session.addEventListener( new DebugAgendaEventListener() );
-            // TODO add time agenda group listener
+            session.addEventListener( new TimerAgendaEventListener() );
+
         }
         // End Test Debugging ONLY
 

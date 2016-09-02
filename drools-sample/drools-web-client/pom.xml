@@ -4,16 +4,16 @@
 		http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.sample</groupId>
-	<artifactId>web-client</artifactId>
+	<artifactId>drools-web-client</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Web Client</name>
+	<name>Drools Web Client</name>
 	<description>Sample client project using Drools runner, and cucumber.</description>
 	<inceptionYear>2016</inceptionYear>
 
 	<modules>
-		<module>sample-client-bom</module>
-		<module>sample-rules</module>
-		<module>sample-client</module>
+		<module>drools-sample-client-bom</module>
+		<module>drools-sample-rules</module>
+		<module>drools-sample-client</module>
 	</modules>	
 </project>
