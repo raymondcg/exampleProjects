@@ -1,11 +1,14 @@
 package org.sample.config;
 
-import org.sample.domain.service.HelloWorldService;
+import org.sample.controller.HelloWorldService;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Application {
+@EnableWebMvc
+@ComponentScan(basePackages = "org.sample")
+public class Application extends WebMvcConfigurerAdapter {
 
     @Bean
     public HelloWorldService helloWorldService() {
