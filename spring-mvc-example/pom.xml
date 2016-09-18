@@ -5,17 +5,17 @@
 
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.sample</groupId>
-   <artifactId>maven-template</artifactId>
+   <artifactId>spring-mvc-example</artifactId>
    <version>1.0-SNAPSHOT</version>
 
    <packaging>pom</packaging>
-   <name>maven-template</name>
+   <name>spring-mvc-example</name>
    <description>Example project to demonstrate a basic maven layout.</description>
    <inceptionYear>2016</inceptionYear>
 
    <modules>
-      <module>maven-template-bom</module>
-      <module>maven-template-module</module>
+      <module>spring-mvc-bom</module>
+      <module>spring-mvc-module</module>
    </modules>
 
    <properties>

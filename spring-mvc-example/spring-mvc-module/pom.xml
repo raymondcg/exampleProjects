@@ -7,13 +7,13 @@
    <packaging>jar</packaging>
    <parent>
       <groupId>org.sample</groupId>
-      <artifactId>maven-template-bom</artifactId>
+      <artifactId>spring-mvc-bom</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <relativePath>../maven-template-bom</relativePath>
+      <relativePath>../spring-mvc-bom</relativePath>
    </parent>
-   <artifactId>maven-template-module</artifactId>
+   <artifactId>spring-mvc-module</artifactId>
 
-   <name>maven-template-module</name>
+   <name>spring-mvc-module</name>
    <description>Module project to demonstrate a basic maven layout. This could be an archetype, but I'm too lazy to do that.</description>
    <inceptionYear>2016</inceptionYear>
 

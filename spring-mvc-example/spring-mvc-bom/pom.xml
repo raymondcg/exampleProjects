@@ -7,13 +7,13 @@
 
    <parent>
       <groupId>org.sample</groupId>
-      <artifactId>maven-template</artifactId>
+      <artifactId>spring-mvc-example</artifactId>
       <version>1.0-SNAPSHOT</version>
       <relativePath>../</relativePath>
    </parent>
-   <artifactId>maven-template-bom</artifactId>
+   <artifactId>spring-mvc-bom</artifactId>
 
-   <name>maven-template-bom</name>
+   <name>spring-mvc-bom</name>
    <description>Bill of Materials (parent pom) project to demonstrate a basic maven layout.</description>
    <inceptionYear>2016</inceptionYear>
 
