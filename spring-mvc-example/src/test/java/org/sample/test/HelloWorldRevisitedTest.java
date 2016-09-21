@@ -6,17 +6,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 import org.junit.Test;
-import org.sample.controller.HelloWorldController;
-import org.springframework.http.MediaType;
+import org.sample.controller.HelloWorldControllerRevisited;
 
-public class HelloWorldTest {
+public class HelloWorldRevisitedTest {
 
     @Test
     public void shouldSayHi() throws Exception {
 
-        standaloneSetup( new HelloWorldController() ).build().perform( get( "/simple" ).accept( MediaType.TEXT_PLAIN ) )
+        standaloneSetup( new HelloWorldControllerRevisited() ).build().perform( get( "/simple/revisited" ) )
                 .andExpect( status().isOk() ).andExpect( content().contentType( "text/plain;charset=ISO-8859-1" ) )
-                .andExpect( content().string( "Hello world!" ) );
+                .andExpect( content().string( "Hello world revisited!" ) );
 
     }
 }

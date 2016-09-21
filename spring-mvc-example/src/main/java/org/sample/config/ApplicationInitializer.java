@@ -6,17 +6,16 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { Application.class };
+        return new Class[] { SpringRootConfig.class };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class[] { SpringWebConfig.class };
     }
 
     @Override
     protected String[] getServletMappings() {
-        // TODO Auto-generated method stub
-        return null;
+        return new String[] { "/" };
     }
 }

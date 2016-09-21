@@ -8,7 +8,7 @@
     <artifactId>spring-mvc-example</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>spring-mvc-example</name>
     <description>Example project to demonstrate a Spring MVC with java configuration.</description>
     <inceptionYear>2016</inceptionYear>
@@ -22,10 +22,7 @@
         <java.version>1.8</java.version>
         <formatter.plugin.version>0.5.2</formatter.plugin.version>
         <resources.plugin.version>2.7</resources.plugin.version>
-
-        <!-- Maven Plugins -->
-        <surefire.plugin.version>2.18</surefire.plugin.version>
-        <failsafe.version>2.18</failsafe.version>
+        <maven.war.version>2.4</maven.war.version>
 
         <!-- Logging -->
         <slf4j.version>1.7.21</slf4j.version>
@@ -36,12 +33,10 @@
         <junit.version>4.12</junit.version>
 
         <!-- Spring -->
-        <springframework.version>4.2.5.RELEASE</springframework.version>
+        <springframework.version>4.3.3.RELEASE</springframework.version>
 
         <!-- Servlet -->
-        <tomcat.version>8.5.4</tomcat.version>
-        <jstl.version>1.2.1</jstl.version>
-        <javax.servlet.version>3.1.0</javax.servlet.version>
+        <tomcat.version>8.5.2</tomcat.version>
     </properties>
 
     <dependencies>
@@ -89,8 +84,9 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${springframework.version}</version>
+            <scope>test</scope>
         </dependency>
-
+        
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -101,7 +97,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${springframework.version}</version>
-        </dependency> 
+        </dependency>
 
         <!-- Servlet -->
         <dependency>
@@ -109,39 +105,21 @@
             <artifactId>tomcat-servlet-api</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-        <!-- Is this one necessary? -->
-        <dependency>
-            <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-            <version>${jstl.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <resources>
-            <resource>
-                <directory>${basedir}/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>${basedir}/src/main/webapp</directory>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>${basedir}/src/test/resources</directory>
-            </testResource>
-            <testResource>
-                <directory>${basedir}/src/test/webapp</directory>
-            </testResource>
-        </testResources>
 
         <plugins>
+            <!-- Web.xml not required for servlet 3. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven.war.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
             <!-- Compiles to a specific java version. Also sets encoding to UTF-8 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -155,27 +133,6 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-
-            <!-- Code Formatting, on 'clean' goal -->
-            <plugin>
-                <groupId>net.revelc.code</groupId>
-                <artifactId>formatter-maven-plugin</artifactId>
-                <version>${formatter.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <!-- Binding to clean phase because M2E doesn't work correctly for this plugin. -->
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <configFile>${basedir}/etc/eclipse/JavaCodeStyle.xml</configFile>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-
             <!-- To properly set encoding -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -184,65 +141,6 @@
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>
-
-            <!-- Unit test runner for maven -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
-                <configuration>
-                    <parallel>methods</parallel>
-                    <threadCount>5</threadCount>
-                    <includes>
-                        <include>**/*Test*.java</include>
-                    </includes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>surefire-test</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>default-test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Integration test runner for maven -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${failsafe.version}</version>
-                <configuration>
-                    <parallel>methods</parallel>
-                    <threadCount>5</threadCount>
-                    <includes>
-                        <include>**/*Int*.java</include>
-                    </includes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>integration-test</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>integration-test</goal>
-                        </goals>
-                    </execution>
-                    <!-- Verify phase ensures that the tests fail the build, they aren't re-run even though they appear to 
-                        be run twice. -->
-                    <execution>
-                        <id>verify</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
