@@ -13,7 +13,7 @@ public class HelloWorldController {
 
     @RequestMapping("/simple")
     public @ResponseBody String simple() {
-        LOGGER.info( "hello world" );
+        LOGGER.info( "hello world {}", "Lazy Patterns FTW" );
         return "Hello world!";
     }
 }

@@ -14,7 +14,7 @@ public class HelloWorldControllerRevisited {
 
     @RequestMapping(value = "/simple/revisited", method = RequestMethod.GET, headers = "Accept=text/plain")
     public @ResponseBody String simple() {
-        LOGGER.info( "hello world revisited" );
+        LOGGER.info( "hello world revisited {}", "Lazy Patterns FTW" );
         return "Hello world revisited!";
     }
 }
