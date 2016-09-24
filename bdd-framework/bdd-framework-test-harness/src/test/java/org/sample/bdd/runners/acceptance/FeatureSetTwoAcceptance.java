@@ -12,7 +12,7 @@ import cucumber.api.CucumberOptions;
 @RunWith(CucumberAcceptanceProfile.class)
 @CucumberOptions(plugin = { "json:target/featureSetTwoAcceptance.json",
         "html:target/cucumber/featureSetTwoAcceptance" }, tags = { "@FeatureSetTwo", "~@Ignore",
-                "~@not_implemented" }, glue = { "org.sample.bdd.stepDefinitions", "cucumber.api.spring" }, features = {
+                "~@not_implemented" }, glue = { "org.sample.bdd.stepdefinitions", "cucumber.api.spring" }, features = {
                         "src/test/resources/features" }, strict = true, monochrome = true)
 public class FeatureSetTwoAcceptance {
 

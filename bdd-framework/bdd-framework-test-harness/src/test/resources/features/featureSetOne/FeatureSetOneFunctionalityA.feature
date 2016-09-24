@@ -4,6 +4,7 @@
 @FeatureSetOne
 Feature: Saving users
 
+@wip @txn
 Scenario: Adding users
 Given the following users:
 | Id | Name | Email       |

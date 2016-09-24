@@ -12,7 +12,7 @@ import cucumber.api.CucumberOptions;
 @RunWith(CucumberTestProfileLargeGridSize.class)
 @CucumberOptions(plugin = { "json:target/featureSetOneLargeGridSizeTest.json",
         "html:target/cucumber/featureSetOneLargeGridSizeTest" }, tags = { "@FeatureSetOne", "~@Ignore",
-                "~@not_implemented" }, glue = { "org.sample.bdd.stepDefinitions", "cucumber.api.spring" }, features = {
+                "~@not_implemented" }, glue = { "org.sample.bdd.stepdefinitions", "cucumber.api.spring" }, features = {
                         "src/test/resources/features" }, strict = true, monochrome = true)
 public class FeatureSetOneLargeGridSizeTest {
 

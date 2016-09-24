@@ -13,7 +13,7 @@ import cucumber.api.CucumberOptions;
 @Ignore
 @RunWith(CucumberTestProfile.class)
 @CucumberOptions(plugin = { "json:target/notImplementedTest.json", "html:target/cucumber/notImplementedTest" }, tags = {
-        "@not_implemented", "@Ignore" }, glue = { "org.sample.bdd.stepDefinitions",
+        "@not_implemented", "@Ignore" }, glue = { "org.sample.bdd.stepdefinitions",
                 "cucumber.api.spring" }, features = { "src/test/resources/features" }, strict = true, monochrome = true)
 public class NotImplementedTest {
 

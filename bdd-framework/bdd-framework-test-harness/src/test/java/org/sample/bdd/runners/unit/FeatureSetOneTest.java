@@ -11,7 +11,7 @@ import cucumber.api.CucumberOptions;
 // TODO make json and html configurable from properties file, so a single runner Can be used.
 @RunWith(CucumberTestProfile.class)
 @CucumberOptions(plugin = { "json:target/featureSetOneTest.json", "html:target/cucumber/featureSetOneTest" }, tags = {
-        "@FeatureSetOne", "~@Ignore", "~@not_implemented" }, glue = { "org.sample.bdd.stepDefinitions",
+        "@FeatureSetOne", "~@Ignore", "~@not_implemented" }, glue = { "org.sample.bdd.stepdefinitions",
                 "cucumber.api.spring" }, features = { "src/test/resources/features" }, strict = true, monochrome = true)
 public class FeatureSetOneTest {
 

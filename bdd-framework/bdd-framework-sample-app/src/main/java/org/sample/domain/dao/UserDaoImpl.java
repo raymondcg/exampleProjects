@@ -6,7 +6,11 @@ import java.util.Set;
 
 import org.sample.domain.api.UserDao;
 import org.sample.domain.model.User;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
+@Repository
 public class UserDaoImpl implements UserDao {
 
     private Set<User> users = new HashSet<>();
