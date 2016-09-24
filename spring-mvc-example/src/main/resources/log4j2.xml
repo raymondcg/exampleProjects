@@ -6,7 +6,7 @@
         <!-- Rolled files are compressed. -->
         <RollingRandomAccessFile name="RollingRandomAccessFile " fileName="logs/app.log"
             filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
-            <PatternLayout pattern="%d %p | %t | %c{55} | %m | %n" />
+            <PatternLayout pattern="%date | %-5level | %threadName | %-55c{.1} | %message%n%throwable" />
             <Policies>
                 <!-- Rotates the file if the day it was created is not the current day. -->
                 <TimeBasedTriggeringPolicy />

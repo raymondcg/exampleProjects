@@ -25,10 +25,7 @@
         <maven.war.version>2.4</maven.war.version>
 
         <!-- Logging -->
-        <slf4j.version>1.7.21</slf4j.version>
-        <log4j.version>2.6.2</log4j.version>
-        <logback.version>1.1.7</logback.version>
-        <commons.logging.version>1.2</commons.logging.version>
+        <log4j2.version>2.6.2</log4j2.version>
 
         <!-- Testing -->
         <junit.version>4.12</junit.version>
@@ -41,36 +38,23 @@
     </properties>
 
     <dependencies>
-        <!-- SLF4j API -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
         <!-- log4j configuration -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>${log4j.version}</version>
+            <version>${log4j2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <!-- For Binding SLF4j to log4j -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
+            <version>${log4j2.version}</version>
         </dependency>
         <!-- Required for bridging jcl / java commons logging to log4j -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-jcl</artifactId>
-            <version>${log4j.version}</version>
+            <version>${log4j2.version}</version>
         </dependency>
-
 
         <!-- Test -->
         <dependency>
