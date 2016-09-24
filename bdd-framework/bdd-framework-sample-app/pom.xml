@@ -11,12 +11,11 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath>../bdd-framework-bom</relativePath>
     </parent>
-    <artifactId>bdd-framework-test-harness</artifactId>
+    <artifactId>bdd-framework-sample-app</artifactId>
 
-    <name>bdd-framework-test-harness</name>
-    <description>The actual project that performs the BDD tests against the application. This project is re-usable across unit, integrated, and acceptance test phases. It theoretically 'can' be used in performance phases, though the viability of that is not proven...</description>
+    <name>bdd-framework-sample-app</name>
+    <description>bdd-framework-sample-app for the bdd framework example.</description>
     <inceptionYear>2016</inceptionYear>
-
 
     <dependencies>
         <!-- log4j configuration -->
@@ -39,33 +38,24 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
 
-        <!-- Spring DI -->
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <!-- Unit test runner for maven -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
-            <!-- Integration test runner for maven -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

@@ -17,7 +17,7 @@
       <module>bdd-framework-bom</module>
 	  
 	  <!-- The application under test. -->
-	  <module>sample-app</module>
+	  <module>bdd-framework-sample-app</module>
 	  
 	  <!-- Test Harness should be final module built, it will test the application built in sample-app. -->
       <module>bdd-framework-test-harness</module>
@@ -103,7 +103,6 @@
          </plugin>
       </plugins>
    </build>
-
    <licenses>
       <license>
          <name>Apache License, Version 2.0</name>
@@ -112,50 +111,4 @@
          <comments>A business-friendly OSS license</comments>
       </license>
    </licenses>
-
-   <organization>
-      <name>Codehaus Mojo</name>
-      <url>http://mojo.codehaus.org</url>
-   </organization>
-
-   <developers>
-      <developer>
-         <id>jdoe</id>
-         <name>John Doe</name>
-         <email>jdoe@example.com</email>
-         <url>http://www.example.com/jdoe</url>
-         <organization>ACME</organization>
-         <organizationUrl>http://www.example.com</organizationUrl>
-         <roles>
-            <role>architect</role>
-            <role>developer</role>
-         </roles>
-         <timezone>America/New_York</timezone>
-         <properties>
-            <picUrl>http://www.example.com/jdoe/pic</picUrl>
-         </properties>
-      </developer>
-   </developers>
-
-   <contributors>
-      <contributor>
-         <name>Noelle</name>
-         <email>some.name@gmail.com</email>
-         <url>http://noellemarie.com</url>
-         <organization>Noelle Marie</organization>
-         <organizationUrl>http://noellemarie.com</organizationUrl>
-         <roles>
-            <role>tester</role>
-         </roles>
-         <timezone>America/Vancouver</timezone>
-         <properties>
-            <gtalk>some.name@gmail.com</gtalk>
-         </properties>
-      </contributor>
-   </contributors>
-
-   <issueManagement>
-      <system>Bugzilla</system>
-      <url>http://127.0.0.1/bugzilla/</url>
-   </issueManagement>
 </project>
