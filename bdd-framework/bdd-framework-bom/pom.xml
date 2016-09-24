@@ -30,6 +30,7 @@
 
         <!-- Testing -->
         <junit.version>4.12</junit.version>
+        <cucumber.version>1.2.5</cucumber.version>
 
         <!-- Spring -->
         <springframework.version>4.3.3.RELEASE</springframework.version>
