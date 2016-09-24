@@ -18,6 +18,13 @@
     <inceptionYear>2016</inceptionYear>
 
     <dependencies>
+
+        <!-- Application under test -->
+        <dependency>
+            <groupId>org.sample</groupId>
+            <artifactId>bdd-framework-sample-app</artifactId>
+        </dependency>
+
         <!-- log4j configuration -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

@@ -2,31 +2,59 @@
 This is demonstrating how a bdd framework would wrap around and test an application. It will be useful in unit tests, integrated tests, and acceptance tests.
 
 ## Future Enhancements ##
+* [ ] Simplify
+	* [ ] Add sprint boot
+	* [ ] Set spring profile in maven profile
+	* [ ] Use application-${profile}.yml to configure the differences between unit, int, and acceptance tests. (Reduce to one set of runners rather than three)
+* [ ] Add Spring MVC - 'when' tests through service.
+* [ ] Acceptance tests run against running spring boot jar
+* [ ] Add in memory database
 * [ ] Finish up liquibase setup in sample app
 	* [ ] Make it so that liquibase only runs when 'wanted'
 	* [ ] Make 'unit' test phase use in memory DB and liquibase to set it up
 	* [ ] Make 'integration' test phase use 'physical' DB and use liquibase to set it up/update it.
-* [ ] Write sample App
-	* [ ] Spring boot deployable for batch job.
-	* [ ] Spring boot / mvc war deployable for basic services.
-	* [ ] Make dao and domain model.
-	* [ ] Make very trivial process step.
-* [ ] Flesh out bdd-framework-test-harness to show basic concepts.
-
+* [ ] Configure deployables.zip
+	
 ## Local development environment setup instructions ##
 Follow parent readme.md instructions.
 
 ## Build / Deploy Instructions ##
-### Build ###
-#### Build / Test ####
-1. Unit / Acceptance Testing
+
+### Deploy / Start ###
+1. Download from binary storage location.
+	1. For local developer testing just copy from target or local .m2 repository
+2. Move Jar to execution folder (set permissions, etc)
+3. Download deployables.zip from binary storage location.
+	1. For local developer testing just copy from target or local .m2 repository
+4. Unzip deployables.zip and copy application.yml and log4j2.xml to execution folder (set permissions, etc)
+5. Start jar with default logging arguments included in jar.
+```
+java --jar ${artifactName}
+```
+6. Start jar with log4j configuration file
+```
+java -Dlog4j.file.location=./log4j2.xml -jar ${artifactName}
+```
+7. Start jar with other arguments (GC logging, memory configuration, etc)
+```
+__TBD__
+```
+
+### Build / Test ###
+#### Unit Test ####
+* Unit  Testing
 ```
 mvn clean install
 ```
-2. System Integrated Test
+
+#### Integration Test ####
+* Int Testing
 ```
-mvn clean install -Pintegrated
+mvn clean install -Pintegration
 ```
 
-#### Deploy ####
-_TBD_
+#### Acceptance Test ####
+* Acceptance Testing
+```
+mvn clean install -Pacceptance
+```
