@@ -1,0 +1,18 @@
+Servlet or application context:
+
+<beans
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:orcl="http://www.springframework.org/schema/data/orcl"
+xsi:schemaLocation="
+	http://www.springframework.org/schema/data/orcl
+	http://www.springframework.org/schema/aop/spring-aop.xsd"
+	
+	<!-- Other point cuts: pointcut="execution(public * org.springframework.batch.admin.service.*Dao.*(..))" -->
+	
+	<aop:config>
+		<aop:advisor pointcut="@annotation(org.springframework.transaction.annotation.Transactional)"
+		advice-ref="racFailoverInterceptor" order="1" />
+		
+	<!-- Could add back-off-policy from org.springframework.batch.retry.backoff.BackOffPolicy -->
+	<orcl:rac-failover-interceptor id="racFailoverInterceptor" recoverable-error-codes="17410,17008,12514" max-number-of-retries="10" />
+</beans>

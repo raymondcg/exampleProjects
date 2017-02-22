@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
 <Configuration status="INFO" monitorInterval="3600">
     <!-- monitorInterval checks for changes to configuration file every specified number of seconds. Not so great when the 
         configuration file is loaded from the artifact, but awesome if its loaded from the file system at run time. -->
