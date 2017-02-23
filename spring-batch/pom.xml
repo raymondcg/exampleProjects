@@ -15,7 +15,8 @@
 
    <modules>
       <module>spring-batch-bom</module>
-      <module>spring-batch-domain</module>
+      <module>spring-batch-hello-world</module>
+	  <module>spring-batch-domain</module>
 	  <module>spring-batch-jar</module>
 	  <module>spring-batch-war</module>
    </modules>

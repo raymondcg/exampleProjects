@@ -7,7 +7,7 @@
       http://www.springframework.org/schema/batch
       http://www.springframework.org/schema/batch/spring-batch.xsd">
 
-    <import resource="../config/context.xml" />
+    <import resource="jobSupport/context.xml" />
  
     <batch:job id="helloWorldJob">
         <batch:step id="processorStep" next="badCount">

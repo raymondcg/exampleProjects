@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:master/job-hello-world.xml", "classpath:master/jobSupport/context.xml" })
+@ContextConfiguration(locations = { "classpath:master/job-hello-world.xml" })
 public class AppTest {
 
     @Autowired

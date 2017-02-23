@@ -24,14 +24,11 @@
         <failsafe.version>2.18</failsafe.version>
         <maven.jboss.plugin.version>7.7.Final</maven.jboss.plugin.version>
 
-        <!-- Logging -->
-        <slf4j.version>1.7.21</slf4j.version>
-        <logback.version>1.1.7</logback.version>
-
         <!-- Testing -->
         <junit.version>4.12</junit.version>
 
         <!-- Spring -->
+        <spring.boot.version>1.5.1.RELEASE</spring.boot.version>
         <springframework.version>4.2.5.RELEASE</springframework.version>
 
         <!-- Spring Batch / Admin -->
@@ -40,41 +37,41 @@
 
         <!-- For processing Spring Batch Admin's JSP ui page -->
         <servlet.api.version>2.5</servlet.api.version>
+        
+        <!-- HSQL DB -->
+        <hsql.version>2.3.4</hsql.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- Custom Batch definition jar -->
+            <!-- Project that handles 1 to many batch jobs. -->
             <dependency>
                 <groupId>org.sample</groupId>
                 <artifactId>spring-batch-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!-- Hello World batch job -->
+            <dependency>
+                <groupId>org.sample</groupId>
+                <artifactId>spring-batch-hello-world</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
-            <!-- Logging -->
+            <!-- Spring Boot BOM -->
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-            <!-- file appender logging -->
+
+            <!-- Global exclusion of log4j 1 -->
             <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <!-- Required for binding logback to slf4j -->
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <!--Binding for commons logging over slf4j -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jcl-over-slf4j</artifactId>
-                <version>${slf4j.version}</version>
-                <scope>runtime</scope>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+                <scope>provided</scope>
             </dependency>
 
             <!-- Test -->
@@ -89,14 +86,6 @@
                 <artifactId>spring-test</artifactId>
                 <version>${springframework.version}</version>
                 <scope>test</scope>
-                <exclusions>
-                    <!-- Disable spring logging and allow link into SLF4J logging, validate this is needed or only the jcl 
-                        over slf4j. -->
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
 
             <!-- Spring -->
@@ -104,14 +93,6 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${springframework.version}</version>
-                <exclusions>
-                    <!-- Disable spring logging and allow link into SLF4J logging, validate this is needed or only the jcl 
-                        over slf4j. -->
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
 
             <!-- Spring Batch -->
@@ -119,14 +100,6 @@
                 <groupId>org.springframework.batch</groupId>
                 <artifactId>spring-batch-core</artifactId>
                 <version>${spring.batch.core.version}</version>
-                <exclusions>
-                    <!-- Disable spring logging and allow link into SLF4J logging, validate this is needed or only the jcl 
-                        over slf4j. -->
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.springframework.batch</groupId>
@@ -144,14 +117,11 @@
                 <groupId>org.springframework.batch</groupId>
                 <artifactId>spring-batch-admin-manager</artifactId>
                 <version>${spring.batch.admin.version}</version>
-                <exclusions>
-                    <!-- Disable spring logging and allow link into SLF4J logging, validate this is needed or only the jcl 
-                        over slf4j. -->
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.batch</groupId>
+                <artifactId>spring-batch-admin-resources</artifactId>
+                <version>${spring.batch.admin.version}</version>
             </dependency>
 
             <!-- Enable Spring Batch Admin web UI -->
@@ -159,16 +129,16 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
                 <version>${servlet.api.version}</version>
-                <exclusions>
-                    <!-- Disable spring logging and allow link into SLF4J logging, validate this is needed or only the jcl 
-                        over slf4j. -->
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
 
+            <!-- In memory Database -->
+            <dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>${hsql.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            
         </dependencies>
     </dependencyManagement>
 
@@ -239,6 +209,19 @@
                     <artifactId>jboss-as-maven-plugin</artifactId>
                     <version>${maven.jboss.plugin.version}</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                </plugin>
+
+                <!-- TODO update this plugin -->
+                <!-- <plugin> <artifactId>maven-enforcer-plugin</artifactId> <version>1.1.1</version> <executions> <execution> 
+                    <id>enforce-banned-dependencies</id> <goals> <goal>enforce</goal> </goals> <configuration> <rules> <bannedDependencies> <searchTransitive>true</searchTransitive> 
+                    <excludes> <exclude>org.slf4j:1.5*</exclude> <exclude>org.slf4j:1.6*</exclude> <exclude>org.springframework:2.*</exclude> 
+                    <exclude>org.springframework:3.0.*</exclude> </excludes> </bannedDependencies> </rules> <fail>true</fail> </configuration> 
+                    </execution> </executions> </plugin> -->
             </plugins>
         </pluginManagement>
     </build>
