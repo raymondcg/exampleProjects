@@ -1,17 +1,14 @@
 1. Install java JDK
 2. Install Maven
 3. Configure Environment Variables
-
 ```Bash
 ```
 
 4. Update Path
-
 ```bash
 ```
 
 5. Verify Java and Maven Versions
-
 ```bash
 ```
 
