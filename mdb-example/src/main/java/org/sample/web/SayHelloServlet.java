@@ -17,55 +17,55 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @WebServlet("/")
 public class SayHelloServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 6570115036212268543L;
-    private static final Logger LOGGER = LoggerFactory.getLogger( SayHelloServlet.class );
+	private static final long serialVersionUID = 6570115036212268543L;
+	private static final Logger LOGGER = LogManager.getLogger(SayHelloServlet.class);
 
-    @Override
-    protected void doGet( HttpServletRequest req, HttpServletResponse res ) throws ServletException, IOException {
-        String name = req.getParameter( "name" ) != null ? req.getParameter( "name" ) : "michael";
-        sendMessage( name );
-        LOGGER.info( String.format( "check your console (%s, args )", name ) );
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String name = req.getParameter("name") != null ? req.getParameter("name") : "michael";
+		sendMessage(name);
+		LOGGER.info(String.format("check your console (%s, args )", name));
 
-        // TODO need both logger and response writer?
-        res.getWriter().println( String.format( "check your console (%s, args )", name ) );
-    }
+		// TODO need both logger and response writer?
+		res.getWriter().println(String.format("check your console (%s, args )", name));
+	}
 
-    void sendMessage( String name ) {
-        String destinationName = "queue/helloQueue";
-        Context ic;
-        ConnectionFactory cf;
-        Connection connection = null;
+	void sendMessage(String name) {
+		String destinationName = "queue/helloQueue";
+		Context ic;
+		ConnectionFactory cf;
+		Connection connection = null;
 
-        try {
-            ic = new InitialContext();
+		try {
+			ic = new InitialContext();
 
-            cf = (ConnectionFactory) ic.lookup( "/ConnectionFactory" );
-            Queue queue = (Queue) ic.lookup( destinationName );
+			cf = (ConnectionFactory) ic.lookup("/ConnectionFactory");
+			Queue queue = (Queue) ic.lookup(destinationName);
 
-            connection = cf.createConnection();
-            Session session = connection.createSession( false, Session.AUTO_ACKNOWLEDGE );
-            MessageProducer publisher = session.createProducer( queue );
+			connection = cf.createConnection();
+			Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+			MessageProducer publisher = session.createProducer(queue);
 
-            connection.start();
+			connection.start();
 
-            TextMessage message = session.createTextMessage( name );
-            publisher.send( message );
-        } catch ( Exception e ) {
-            throw new RuntimeException( e );
-        } finally {
-            if ( connection != null ) {
-                try {
-                    connection.close();
-                } catch ( JMSException e ) {
-                    throw new RuntimeException( e );
-                }
-            }
-        }
-    }
+			TextMessage message = session.createTextMessage(name);
+			publisher.send(message);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (JMSException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		}
+	}
 }
