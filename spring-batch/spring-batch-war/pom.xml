@@ -19,10 +19,12 @@
 
     <dependencies>
         <!-- Project that handles 1 to many batch jobs. -->
+        <!-- 
         <dependency>
             <groupId>org.sample</groupId>
             <artifactId>spring-batch-domain</artifactId>
         </dependency>
+         -->
         <!-- Hello World batch job -->
         <dependency>
             <groupId>org.sample</groupId>

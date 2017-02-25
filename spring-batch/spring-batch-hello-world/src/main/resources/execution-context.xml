@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/task
+      http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <!-- Workaround for INT-1831 -->
+    <bean id="dummy" class="java.util.Date" />
+
+    <context:annotation-config />
+    <context:component-scan base-package="org.sample" />
+
+    <bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+        <property name="transactionManager" ref="transactionManager" />
+    </bean>
+
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="jobRepository" />
+    </bean>
+
+    <!-- Allows Spring Batch Admin to load jobs from the class path. -->
+    <bean id="jobLoader" class="org.springframework.batch.core.configuration.support.AutomaticJobRegistrar">
+        <property name="applicationContextFactories">
+            <bean class="org.springframework.batch.core.configuration.support.ClasspathXmlApplicationContextsFactoryBean">
+                <!-- Loads jobs off the class path. -->
+                <property name="resources" value="classpath:/master/jobs/*.xml" />
+            </bean>
+        </property>
+        <property name="jobLoader">
+            <bean class="org.springframework.batch.core.configuration.support.DefaultJobLoader">
+                <property name="jobRegistry" ref="jobRegistry" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="jobRegistry" class="org.springframework.batch.core.configuration.support.MapJobRegistry" />
+
+    <!-- TODO what is this? -->
+    <bean id="jobExplorer" class="org.springframework.batch.core.explore.support.JobExplorerFactoryBean" />
+
+    <!-- TODO what is this? -->
+    <bean id="jobService" class="org.springframework.batch.admin.service.SimpleJobServiceFactoryBean">
+        <property name="jobRepository" ref="jobRepository" />
+        <property name="jobLauncher" ref="jobLauncher" />
+        <property name="jobLocator" ref="jobLocator" />
+        <property name="datasource" ref="datasource" />
+    </bean>
+
+    <!-- TODO what is this? -->
+    <task:scheduled-tasks>
+        <task:scheduled ref="jobService" method="removeInactiveExecutions" fixed-delay="3600" />
+    </task:scheduled-tasks>
+
+</beans>
+      

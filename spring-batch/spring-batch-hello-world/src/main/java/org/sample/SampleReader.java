@@ -7,20 +7,26 @@ import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class SampleReader implements ItemReader<Customer> {
 
-    private static final Logger LOGGER = LogManager.getLogger( SampleReader.class );
+	private static final Logger LOGGER = LogManager.getLogger(SampleReader.class);
 
-    @Autowired
-    private FakeDao fakeDao;
+	private FakeDao fakeDao;
 
-    @Override
-    public Customer read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-        Customer customer = fakeDao.next();
-        LOGGER.debug( "Reader: " + customer );
-        return customer;
-    }
+	@Override
+	public Customer read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+		Customer customer = fakeDao.next();
+		LOGGER.debug("Reader: " + customer);
+		return customer;
+	}
+
+	public FakeDao getFakeDao() {
+		return fakeDao;
+	}
+
+	public void setFakeDao(FakeDao fakeDao) {
+		this.fakeDao = fakeDao;
+	}
 
 }

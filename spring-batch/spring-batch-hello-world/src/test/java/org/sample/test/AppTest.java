@@ -10,25 +10,27 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:master/job-hello-world.xml" })
+@ContextConfiguration(locations = { "classpath:master/jobs/job-hello-world.xml", "classpath:execution-context.xml" })
 public class AppTest {
 
-    @Autowired
-    private Job job;
+	@Autowired
+	private Job job;
 
-    @Autowired
-    private JobLauncher jobLauncher;
+	@Autowired
+	private JobLauncher jobLauncher;
 
-    @Test
-    public void launchJob() throws Exception {
+	@Test
+	public void launchJob() throws Exception {
 
-        // launch the job
-        JobExecution jobExecution = jobLauncher.run( job, new JobParameters() );
-        assertEquals( BatchStatus.COMPLETED, jobExecution.getStatus() );
-    }
+		// launch the job
+		JobExecution jobExecution = jobLauncher.run(job, new JobParameters());
+		assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
+	}
 
 }
