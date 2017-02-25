@@ -7,9 +7,9 @@
    <packaging>jar</packaging>
    <parent>
       <groupId>org.sample</groupId>
-      <artifactId>maven-template-bom</artifactId>
+      <artifactId>jpa-bom</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <relativePath>../jap-bom</relativePath>
+      <relativePath>../jpa-bom</relativePath>
    </parent>
    <artifactId>jpa-module</artifactId>
 
