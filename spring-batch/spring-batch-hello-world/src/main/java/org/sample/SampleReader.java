@@ -10,23 +10,23 @@ import org.springframework.batch.item.UnexpectedInputException;
 
 public class SampleReader implements ItemReader<Customer> {
 
-	private static final Logger LOGGER = LogManager.getLogger(SampleReader.class);
+    private static final Logger LOGGER = LogManager.getLogger( SampleReader.class );
 
-	private FakeDao fakeDao;
+    private FakeDao fakeDao;
 
-	@Override
-	public Customer read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-		Customer customer = fakeDao.next();
-		LOGGER.debug("Reader: " + customer);
-		return customer;
-	}
+    @Override
+    public Customer read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+        Customer customer = fakeDao.next();
+        LOGGER.debug( "Reader: " + customer );
+        return customer;
+    }
 
-	public FakeDao getFakeDao() {
-		return fakeDao;
-	}
+    public FakeDao getFakeDao() {
+        return fakeDao;
+    }
 
-	public void setFakeDao(FakeDao fakeDao) {
-		this.fakeDao = fakeDao;
-	}
+    public void setFakeDao( FakeDao fakeDao ) {
+        this.fakeDao = fakeDao;
+    }
 
 }

@@ -9,22 +9,22 @@ import org.springframework.batch.repeat.RepeatStatus;
 
 public class BadTasklet implements Tasklet {
 
-	private static final Logger LOGGER = LogManager.getLogger(BadTasklet.class);
+    private static final Logger LOGGER = LogManager.getLogger( BadTasklet.class );
 
-	private FakeDao fakeDao;
+    private FakeDao fakeDao;
 
-	@Override
-	public RepeatStatus execute(StepContribution arg0, ChunkContext arg1) throws Exception {
-		LOGGER.info("Count of Bad conditions: " + fakeDao.getBad());
-		return null;
-	}
+    @Override
+    public RepeatStatus execute( StepContribution arg0, ChunkContext arg1 ) throws Exception {
+        LOGGER.info( "Count of Bad conditions: " + fakeDao.getBad() );
+        return null;
+    }
 
-	public FakeDao getFakeDao() {
-		return fakeDao;
-	}
+    public FakeDao getFakeDao() {
+        return fakeDao;
+    }
 
-	public void setFakeDao(FakeDao fakeDao) {
-		this.fakeDao = fakeDao;
-	}
+    public void setFakeDao( FakeDao fakeDao ) {
+        this.fakeDao = fakeDao;
+    }
 
 }
