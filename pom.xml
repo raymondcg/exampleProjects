@@ -14,33 +14,33 @@
     <inceptionYear>2016</inceptionYear>
 
     <modules>
-		<module>bdd-framework</module>
-		<module>database-example</module>
-		<module>drools-sample</module>
-		<module>jboss-example</module>
-		<module>jpa-example</module>
-		<module>maven-template</module>
-		<module>mdb-example</module>
-		<module>spring-batch</module>
-		<module>spring-boot</module>
-		<module>spring-mvc-example</module>
+        <module>bdd-framework</module>
+        <module>database-example</module>
+        <module>drools-sample</module>
+        <module>jboss-example</module>
+        <module>jpa-example</module>
+        <module>maven-template</module>
+        <module>mdb-example</module>
+        <module>spring-batch</module>
+        <module>spring-boot</module>
+        <module>spring-mvc-example</module>
     </modules>
 
-	<properties>
-		<project.buid.sourceEncoding>UTF-8</project.buid.sourceEncoding>
+    <properties>
+        <project.buid.sourceEncoding>UTF-8</project.buid.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		
-		<!-- Maven PluginVersions -->
-		<compiler.plugin.version>3.3</compiler.plugin.version>
+
+        <!-- Maven PluginVersions -->
+        <compiler.plugin.version>3.3</compiler.plugin.version>
         <java.version>1.8</java.version>
         <formatter.plugin.version>0.5.2</formatter.plugin.version>
         <resources.plugin.version>2.7</resources.plugin.version>
-		<enforcer.plugin.version>1.4.1</enforcer.plugin.version>
-	</properties>
+        <enforcer.plugin.version>1.4.1</enforcer.plugin.version>
+    </properties>
 
     <build>
         <plugins>
-			<!-- Compiles to a specific java version. Also sets encoding to UTF-8 -->
+            <!-- Compiles to a specific java version. Also sets encoding to UTF-8 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -62,67 +62,8 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-			<!-- Code Formatting, on 'clean' goal -->
+            <!-- Directory plugin to find parent root directory absolute path -->
             <plugin>
-               <groupId>net.revelc.code</groupId>
-               <artifactId>formatter-maven-plugin</artifactId>
-               <version>${formatter.plugin.version}</version>
-               <executions>
-                  <execution>
-                     <!-- Binding to clean phase because M2E doesn't work correctly for this plugin.-->
-                     <phase>clean</phase>
-                     <goals>
-                        <goal>format</goal>
-                     </goals>
-                  </execution>
-               </executions>
-               <configuration>
-                  <configFile>${main.basedir}/etc/eclipse/JavaCodeStyle.xml</configFile>
-                  <encoding>UTF-8</encoding>
-               </configuration>
-            </plugin>
-			<!-- Enforces Rules on code base. -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>${enforcer.plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>enforce</id>
-                            <configuration>
-                                <rules>
-                                    <!-- Enforces that deps converge to the same version -->
-                                    <dependencyConvergence/>
-                                    <!-- Requires that dependencies are not snapshot, they must be release versions. -->
-                                    <!--
-                                    <requireReleaseDeps>
-                                        <message>No Snapshots Allowed!</message>
-                                    </requireReleaseDeps>
-                                    -->
-                                    <!-- Enforces multi-module projects follow best practices. -->
-                                    <!--
-                                    <reactorModuleConvergence>
-                                        <message>The reactor is not valid</message>
-                                        <ignoreModuleDependencies>true</ignoreModuleDependencies>
-                                    </reactorModuleConvergence>
-                                    -->
-                                    <!-- Consider this one, it requires that the version is a release version. Which should only be happening on the release step of the pipeline. -->
-                                    <!--
-                                    <requireReleaseVersion>
-                                        <message>No Snapshots Allowed!</message>
-                                    </requireReleaseVersion>
-                                    -->
-                                </rules>
-                                <fail>true</fail>
-                            </configuration>
-                            <goals>
-                                <goal>enforce</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-            </plugin>
-			<!-- Directory plugin to find parent root directory absolute path -->
-<plugin>
                 <groupId>org.commonjava.maven.plugins</groupId>
                 <artifactId>directory-maven-plugin</artifactId>
                 <version>0.1</version>
@@ -132,21 +73,71 @@
                         <goals>
                             <goal>directory-of</goal>
                         </goals>
-                        <phase>initialize</phase>
+                        <phase>pre-clean</phase>
                         <configuration>
                             <property>main.basedir</property>
                             <project>
-							    <groupId>org.sample</groupId>
-								<artifactId>example-projects</artifactId>
+                                <groupId>org.sample</groupId>
+                                <artifactId>example-projects</artifactId>
                             </project>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+            <!-- Code Formatting, on 'clean' goal -->
+            <plugin>
+                <groupId>net.revelc.code</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+                <version>${formatter.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <!-- Binding to clean phase because M2E doesn't work correctly for this plugin. -->
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <configFile>${main.basedir}/etc/eclipse/JavaCodeStyle.xml</configFile>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- Enforces Rules on code base. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${enforcer.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <configuration>
+                            <rules>
+                                <!-- Enforces that deps converge to the same version -->
+                                <dependencyConvergence />
+                                <!-- Requires that dependencies are not snapshot, they must be release versions. -->
+                                <!-- <requireReleaseDeps> <message>No Snapshots Allowed!</message> </requireReleaseDeps> -->
+                                <!-- Enforces multi-module projects follow best practices. -->
+                                <!-- <reactorModuleConvergence> <message>The reactor is not valid</message> <ignoreModuleDependencies>true</ignoreModuleDependencies> 
+                                    </reactorModuleConvergence> -->
+                                <!-- Consider this one, it requires that the version is a release version. Which should only 
+                                    be happening on the release step of the pipeline. -->
+                                <!-- <requireReleaseVersion> <message>No Snapshots Allowed!</message> </requireReleaseVersion> -->
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
         <pluginManagement>
             <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven 
+                    build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
