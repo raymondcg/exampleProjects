@@ -36,7 +36,7 @@ public class CommandUtils {
                 KieQuery queryInfo = field.getAnnotation( KieQuery.class );
                 if ( queryInfo != null ) {
                     String queryName = queryInfo.queryName();
-                    queryCommands.add( commandFactory.newQuery( queryName, queryName ) );
+                    queryCommands.add(KieServices.Factory.get().getCommands().newQuery(queryName, queryName));
                 }
             }
         }
@@ -122,7 +122,7 @@ public class CommandUtils {
         commands.add( commandFactory.newFireAllRules() );
 
         // Creates commands to run the queries at the end of process
-        commands.addAll( CommandUtils.buildGlobalCommands( responseClazz ) );
+        commands.addAll(CommandUtils.buildQueryCommands(responseClazz));
 
         return null == lookup ? commandFactory.newBatchExecution( commands )
                 : commandFactory.newBatchExecution( commands, lookup );
