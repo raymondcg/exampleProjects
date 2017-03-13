@@ -47,7 +47,7 @@ public class StatelessRulesRunner implements RulesRunner {
 
         StatelessKieSession session;
         try {
-            session = kieContainer.newStatelessKieSession();
+            session = kieContainer.newStatelessKieSession(lookup);
 
         } catch ( Exception e ) {
             logger.error( e.getLocalizedMessage() );
