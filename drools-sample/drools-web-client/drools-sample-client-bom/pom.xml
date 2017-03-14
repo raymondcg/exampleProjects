@@ -1,170 +1,174 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="
+    xsi:schemaLocation="
 		http://maven.apache.org/POM/4.0.0 
 		http://maven.apache.org/xsd/maven-4.0.0.xsd">
-   <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-   <parent>
-      <groupId>org.sample</groupId>
-      <artifactId>drools-web-client</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <relativePath>../</relativePath>
-   </parent>
-   <artifactId>drools-sample-client-bom</artifactId>
-   <packaging>pom</packaging>
+    <parent>
+        <groupId>org.sample</groupId>
+        <artifactId>drools-web-client</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <artifactId>drools-sample-client-bom</artifactId>
+    <packaging>pom</packaging>
 
-   <name>Drools Sample Client Bill of Materials</name>
-   <description>Sample client project to leverage drools runner, drools kjar, and cucumber testing</description>
-   <inceptionYear>2016</inceptionYear>
+    <name>Drools Sample Client Bill of Materials</name>
+    <description>Sample client project to leverage drools runner, drools kjar, and cucumber testing</description>
+    <inceptionYear>2016</inceptionYear>
 
-   <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-      <!-- Maven Plugins -->
-      <java.version>1.8</java.version>
-      <compiler.plugin.version>3.3</compiler.plugin.version>
-      <surefire.plugin.version>2.18</surefire.plugin.version>
-      <failsafe.version>2.18</failsafe.version>
-      <lifecycle.version>1.0</lifecycle.version>
-      <dependency.version>2.0</dependency.version>
+        <!-- Maven Plugins -->
+        <java.version>1.8</java.version>
+        <compiler.plugin.version>3.3</compiler.plugin.version>
+        <surefire.plugin.version>2.18</surefire.plugin.version>
+        <failsafe.version>2.18</failsafe.version>
+        <lifecycle.version>1.0</lifecycle.version>
+        <dependency.version>2.0</dependency.version>
 
-      <!-- Sample Rules KJar -->
-      <sample-rules.version>1.0-SNAPSHOT</sample-rules.version>
+        <!-- Sample Rules KJar -->
+        <sample-rules.version>1.0-SNAPSHOT</sample-rules.version>
 
-      <!-- Rules Runner -->
-      <rules.runner.version>1.0-SNAPSHOT</rules.runner.version>
+        <!-- Rules Runner -->
+        <rules.runner.version>1.0-SNAPSHOT</rules.runner.version>
 
-      <!-- Logging -->
-      <slf4j.version>1.7.12</slf4j.version>
-      <logback.version>1.1.3</logback.version>
+        <!-- Logging -->
+        <log4j2.version>2.6.2</log4j2.version>
 
-      <!-- For DI -->
-      <springframwork.version>4.2.4.RELEASE</springframwork.version>
+        <!-- For DI -->
+        <springframwork.version>4.2.4.RELEASE</springframwork.version>
 
-      <!-- Testing -->
-      <junit.version>4.12</junit.version>
+        <!-- Testing -->
+        <junit.version>4.12</junit.version>
 
-   </properties>
-   <dependencyManagement>
-      <dependencies>
-         <!-- Rules KJar -->
-         <dependency>
-            <groupId>org.sample</groupId>
-            <artifactId>drools-sample-rules</artifactId>
-            <version>${sample-rules.version}</version>
-         </dependency>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Rules KJar -->
+            <dependency>
+                <groupId>org.sample</groupId>
+                <artifactId>drools-sample-rules</artifactId>
+                <version>${sample-rules.version}</version>
+            </dependency>
 
-         <!-- Rules Runner -->
-         <dependency>
-            <groupId>org.sample</groupId>
-            <artifactId>drools-runner-core</artifactId>
-            <version>${rules.runner.version}</version>
-         </dependency>
+            <!-- Rules Runner -->
+            <dependency>
+                <groupId>org.sample</groupId>
+                <artifactId>drools-runner-core</artifactId>
+                <version>${rules.runner.version}</version>
+            </dependency>
 
-         <!-- Logging -->
-         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-         </dependency>
+            <!-- log4j configuration -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${log4j2.version}</version>
+            </dependency>
 
-         <!-- Test -->
-         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-         </dependency>
-         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${springframwork.version}</version>
-            <scope>test</scope>
-         </dependency>
+            <!-- Test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${springframwork.version}</version>
+                <scope>test</scope>
+            </dependency>
 
-         <!-- DI -->
-         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${springframwork.version}</version>
-         </dependency>
+            <!-- DI -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${springframwork.version}</version>
+            </dependency>
 
-      </dependencies>
-   </dependencyManagement>
+        </dependencies>
+    </dependencyManagement>
 
-   <build>
-      <pluginManagement>
-         <plugins>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-compiler-plugin</artifactId>
-               <version>${compiler.plugin.version}</version>
-               <configuration>
-                  <compilerId>javac</compilerId>
-                  <source>${java.version}</source>
-                  <target>${java.version}</target>
-               </configuration>
-            </plugin>
-            <!-- Unit test runner for maven -->
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-surefire-plugin</artifactId>
-               <version>${surefire.plugin.version}</version>
-               <configuration>
-                  <parallel>methods</parallel>
-                  <threadCount>5</threadCount>
-               </configuration>
-               <executions>
-                  <execution>
-                     <id>surefire-test</id>
-                     <phase>none</phase>
-                  </execution>
-                  <execution>
-                     <id>default-test</id>
-                     <phase>test</phase>
-                     <goals>
-                        <goal>test</goal>
-                     </goals>
-                  </execution>
-               </executions>
-            </plugin>
-            <!-- Integration test runner for maven -->
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-failsafe-plugin</artifactId>
-               <version>${failsafe.version}</version>
-               <configuration>
-                  <parallel>methods</parallel>
-                  <threadCount>5</threadCount>
-                  <includes>
-                     <include>**/*Integration.java</include>
-                  </includes>
-               </configuration>
-               <executions>
-                  <execution>
-                     <id>integration-test</id>
-                     <phase>integration-test</phase>
-                     <goals>
-                        <goal>integration-test</goal>
-                     </goals>
-                  </execution>
-                  <!-- Verify phase ensures that the tests fail the build, they aren't re-run even though they appear to 
-                     be run twice. -->
-                  <execution>
-                     <id>verify</id>
-                     <phase>verify</phase>
-                     <goals>
-                        <goal>verify</goal>
-                     </goals>
-                  </execution>
-               </executions>
-            </plugin>
-         </plugins>
-      </pluginManagement>
-   </build>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler.plugin.version}</version>
+                    <configuration>
+                        <compilerId>javac</compilerId>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <!-- Unit test runner for maven -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${surefire.plugin.version}</version>
+                    <configuration>
+                        <parallel>methods</parallel>
+                        <threadCount>5</threadCount>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>surefire-test</id>
+                            <phase>none</phase>
+                        </execution>
+                        <execution>
+                            <id>default-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Integration test runner for maven -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${failsafe.version}</version>
+                    <configuration>
+                        <parallel>methods</parallel>
+                        <threadCount>5</threadCount>
+                        <includes>
+                            <include>**/*Integration.java</include>
+                        </includes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>integration-test</id>
+                            <phase>integration-test</phase>
+                            <goals>
+                                <goal>integration-test</goal>
+                            </goals>
+                        </execution>
+                        <!-- Verify phase ensures that the tests fail the build, they aren't re-run even though they appear 
+                            to be run twice. -->
+                        <execution>
+                            <id>verify</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

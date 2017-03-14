@@ -16,7 +16,7 @@
 
     <!-- nodes -->
     <startEvent id="_1" name="StartProcess" />
-    <businessRuleTask id="_2" name="Hello World" g:ruleFlowGroup="Hellow World" >
+    <businessRuleTask id="_2" name="Hello World" g:ruleFlowGroup="Hello World" >
     </businessRuleTask>
     <businessRuleTask id="_3" name="Good Bye World" g:ruleFlowGroup="Good Bye World" >
     </businessRuleTask>

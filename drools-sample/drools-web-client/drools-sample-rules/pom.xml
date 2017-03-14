@@ -19,21 +19,8 @@
    <inceptionYear>2016</inceptionYear>
 
    <dependencies>
-      <!-- logging -->
-      <dependency>
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-api</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>ch.qos.logback</groupId>
-         <artifactId>logback-classic</artifactId>
-      </dependency>
 
-      <!-- Testing -->
-      <dependency>
-         <groupId>junit</groupId>
-         <artifactId>junit</artifactId>
-      </dependency>
+
    </dependencies>
 
    <build>

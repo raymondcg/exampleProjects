@@ -1,10 +1,14 @@
 package org.sample.rules
 
-global org.slf4j.Logger logger;
+global org.apache.logging.log4j.Logger LOGGER;
+
+import org.sample.Fallout;
 
 rule "Good Bye World : Good Bye World"
 	ruleflow-group "Good Bye World"
 	
 	then
-		logger.info("Good Bye World");
+		LOGGER.info("Good Bye World");
+		Fallout fallout = new Fallout("opps I hit it again");
+		insert(fallout);
 end

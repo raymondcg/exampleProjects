@@ -1,7 +1,9 @@
 package org.sample.rules
 
+import org.sample.Fallout;
+
 query "Get All Fallout Messages"
 
-	$fallout : String()
+	$fallout : Fallout()
 	
 end

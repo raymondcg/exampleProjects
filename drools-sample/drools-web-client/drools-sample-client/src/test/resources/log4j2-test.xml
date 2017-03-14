@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%date | %-5level | %threadName | %-55c{.1} | %message%n%throwable" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.sample" level="DEBUG" />
+        <Logger name="org.drools" level="DEBUG" />
+        <Logger name="org.springframework" level="WARN" />
+        
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>
